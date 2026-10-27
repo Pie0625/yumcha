@@ -6,11 +6,11 @@ Yumcha helps you and your friends find a good place to *lepak* (hang out). Start
 
 ## Features
 
-**Version 1 (in progress)**
+**Version 1 (built)**
 - Browse cafe suggestions as cards
 - Each cafe shows its **price range**, **environment/vibe** (quiet, aesthetic, good for groups, etc.) and **rating**
-- Filter by price, vibe and rating
-- "Near me" sorting using your device's location 🚧
+- Filter by spend per person, vibe and rating
+- Sort by highest rated, lowest price, or nearest to you (uses your device's location)
 
 **Version 2 (planned)**
 - 🚧 User accounts
@@ -24,7 +24,7 @@ Yumcha helps you and your friends find a good place to *lepak* (hang out). Start
 ## Tech stack
 
 - HTML, CSS and JavaScript (no framework for now)
-- Cafe data stored in a JSON file for v1
+- Cafe data stored in a JavaScript file (`data/cafes.js`) for v1
 - Planned: Leaflet + OpenStreetMap for maps, and Supabase or Firebase for accounts and posts
 
 ## Getting started
@@ -34,30 +34,30 @@ Yumcha helps you and your friends find a good place to *lepak* (hang out). Start
    git clone https://github.com/Pie0625/yumcha.git
    cd yumcha
    ```
-2. Open `index.html` in your browser. If the page loads data from a JSON file, run a simple local server instead:
+2. Open `index.html` in your browser. To test "Use my location", run a simple local server instead, because browsers only allow location on `localhost` or `https`:
    ```bash
    python3 -m http.server 8000
    ```
    Then visit `http://localhost:8000`.
 
-> `index.html` will be added with the first version of the app.
+The cafes in `data/cafes.js` are made-up samples for testing, not real places.
 
-## Project structure (planned)
+## Project structure
 
 ```
 yumcha/
 ├── index.html      # main page
-├── css/            # styles
-├── js/             # app logic
-├── data/           # cafes.json (sample cafe data)
+├── css/styles.css  # styles
+├── js/app.js       # filters, sorting, location
+├── data/cafes.js   # sample cafe data
 └── README.md
 ```
 
 ## Roadmap
 
-- [ ] Cafe list with cards and sample data
-- [ ] Filters (price, vibe, rating)
-- [ ] "Near me" sorting
+- [x] Cafe list with cards and sample data
+- [x] Filters (spend, vibe, rating)
+- [x] "Nearest" sorting
 - [ ] Cafe detail page
 - [ ] Map view
 - [ ] Accounts, posts and discussions
