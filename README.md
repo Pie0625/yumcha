@@ -12,7 +12,7 @@ Yumcha helps you and your friends find a good place to *lepak* (hang out). Start
 - Filter by spend per person, vibe and rating
 - Sort by highest rated, lowest price, or nearest to you (uses your device's location)
 - A picture on every card (drawn sample illustrations for now; swap in real photos any time)
-- Tap a card to open that cafe's own page with all the details and a link to the area on a map
+- Tap a card to open that cafe's own page (like `/kopi-kawan/`) with all the details and a link to the area on a map
 
 **Version 2 (planned)**
 - 🚧 User accounts
@@ -36,13 +36,23 @@ Yumcha helps you and your friends find a good place to *lepak* (hang out). Start
    git clone https://github.com/Pie0625/yumcha.git
    cd yumcha
    ```
-2. Open `index.html` in your browser. To test "Use my location", run a simple local server instead, because browsers only allow location on `localhost` or `https`:
+2. Start a simple local server (needed because each cafe has its own folder address, and browsers only allow location on `localhost` or `https`):
    ```bash
    python3 -m http.server 8000
    ```
-   Then visit `http://localhost:8000`.
+   Then visit `http://localhost:8000`. It forwards to `/home/`, and each cafe lives at an address like `/kopi-kawan/`.
 
 The cafes in `data/cafes.js` are made-up samples for testing, not real places.
+
+### Adding or changing a cafe
+
+Each cafe has its own page address (`/kopi-kawan/`), made from its `id` in `data/cafes.js`. After you add, rename or remove a cafe, regenerate the pages (needs [Node.js](https://nodejs.org)):
+
+```bash
+node tools/build-pages.js
+```
+
+Use lowercase letters, numbers and dashes in the `id`. Then commit the new folder along with the data change.
 
 ### Adding a real photo to a cafe
 
@@ -60,8 +70,10 @@ The pictures in `images/` right now are drawn sample illustrations (`.svg`) that
 
 ```
 yumcha/
-├── index.html      # list of cafes
-├── cafe.html       # one cafe's page (cafe.html?id=...)
+├── index.html      # forwards to /home/
+├── home/           # the list of cafes (yumcha/home/)
+├── kopi-kawan/ ... # one folder per cafe, made by the script (yumcha/kopi-kawan/)
+├── tools/          # build-pages.js and the cafe page template
 ├── css/styles.css  # styles
 ├── js/app.js       # list page: filters, sorting, location
 ├── js/detail.js    # cafe page
