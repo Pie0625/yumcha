@@ -282,6 +282,13 @@ select:hover { border-color: var(--text-soft); }
   color: var(--text-soft);
 }
 .site-footer p { margin: 0; }
+.site-footer .copyright { margin-top: 6px; }
+.site-footer a {
+  color: var(--accent);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+.site-footer a:hover { color: var(--focus); }
 
 [hidden] { display: none !important; }
 
