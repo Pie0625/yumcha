@@ -90,7 +90,7 @@
       window.Yumcha.photoHtml(c, 'cafe-photo') +
       '<div class="cafe-body">' +
       '<div class="cafe-top">' +
-        '<div><h2><a class="cafe-link" href="cafe.html?id=' + encodeURIComponent(c.id) + '">' + escapeHtml(c.name) + '</a></h2>' +
+        '<div><h2><a class="cafe-link" href="' + window.Yumcha.root + encodeURIComponent(c.id) + '/">' + escapeHtml(c.name) + '</a></h2>' +
         '<p class="cafe-place">' + escapeHtml(c.area) + '</p></div>' +
         '<span class="rating" aria-label="Rated ' + c.rating.toFixed(1) + ' out of 5">' + c.rating.toFixed(1) + '</span>' +
       '</div>' +

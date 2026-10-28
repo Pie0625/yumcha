@@ -1,10 +1,11 @@
-// Cafe page: shows one cafe, picked by the ?id= part of the address.
+// Cafe page: shows one cafe. The generated page (tools/build-pages.js) sets window.YUMCHA_CAFE_ID.
 (function () {
   'use strict';
 
   var esc = window.Yumcha.escapeHtml;
   var root = document.getElementById('detail');
-  var id = new URLSearchParams(window.location.search).get('id');
+  var id = window.YUMCHA_CAFE_ID;
+  var homeUrl = window.Yumcha.root + 'home/';
   var cafe = (window.YUMCHA_CAFES || []).filter(function (c) { return c.id === id; })[0];
 
   window.Yumcha.watchPhotoErrors(root);
@@ -15,7 +16,7 @@
       '<div class="empty">' +
         '<h1 class="detail-title">We could not find that cafe</h1>' +
         '<p>The link may be old or mistyped.</p>' +
-        '<a class="btn btn-link" href="index.html">See all cafes</a>' +
+        '<a class="btn btn-link" href="' + homeUrl + '">See all cafes</a>' +
       '</div>';
     return;
   }
@@ -27,7 +28,7 @@
     Number(cafe.lat) + ',' + Number(cafe.lng);
 
   root.innerHTML =
-    '<a class="back-link" href="index.html">Back to all cafes</a>' +
+    '<a class="back-link" href="' + homeUrl + '">Back to all cafes</a>' +
     window.Yumcha.photoHtml(cafe, 'detail-photo') +
     '<div class="detail-head">' +
       '<div><h1 class="detail-title">' + esc(cafe.name) + '</h1>' +

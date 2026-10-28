@@ -3,19 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cafe | Yumcha</title>
+  <title>{{name}} | Yumcha</title>
+  <meta name="description" content="{{description}}">
+  <meta property="og:title" content="{{name}} | Yumcha">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:type" content="website">
   <meta name="theme-color" content="#17100c">
-  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
   <header class="topbar wrap">
-    <a class="brand-link" href="index.html">Yumcha</a>
+    <a class="brand-link" href="../home/">Yumcha</a>
   </header>
 
   <main class="wrap detail" id="detail"></main>
@@ -25,8 +29,9 @@
     <p class="copyright">&copy; 2026 <a href="https://github.com/Pie0625" target="_blank" rel="noopener noreferrer">Pie</a>. All rights reserved.</p>
   </footer>
 
-  <script src="data/cafes.js"></script>
-  <script src="js/common.js"></script>
-  <script src="js/detail.js"></script>
+  <script>window.YUMCHA_CAFE_ID = "{{id}}";</script>
+  <script src="../data/cafes.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/detail.js"></script>
 </body>
 </html>

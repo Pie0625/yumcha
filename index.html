@@ -5,83 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Yumcha: where to lepak?</title>
   <meta name="theme-color" content="#17100c">
+  <meta http-equiv="refresh" content="0; url=home/">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-  <meta name="description" content="Find a cafe to lepak with your friends. Filter by budget, vibe and rating.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #17100c; color: #f0e6d8; font-family: system-ui, sans-serif; }
+    a { color: #d19a5f; }
+  </style>
+  <script>location.replace('home/');</script>
 </head>
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <p class="brand">Yumcha</p>
-      <h1>Where to lepak?</h1>
-      <p class="lede">Cafes where you and your friends can sit, talk and stay a while. Pick a budget and a vibe.</p>
-      <div class="locate">
-        <button type="button" id="locate-btn" class="btn">Use my location</button>
-        <p id="locate-status" class="locate-status" role="status" aria-live="polite"></p>
-      </div>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <section class="filters" aria-label="Filters">
-      <div class="field">
-        <label for="spend">Spend per person</label>
-        <select id="spend">
-          <option value="any">Any budget</option>
-          <option value="15">Up to RM15</option>
-          <option value="25">Up to RM25</option>
-          <option value="40">Up to RM40</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="rating">Rating</label>
-        <select id="rating">
-          <option value="0">Any rating</option>
-          <option value="4">4.0 and up</option>
-          <option value="4.3">4.3 and up</option>
-          <option value="4.5">4.5 and up</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="sort">Sort by</label>
-        <select id="sort">
-          <option value="rating">Highest rated</option>
-          <option value="price">Lowest price</option>
-          <option value="nearest" disabled>Nearest (turn on location)</option>
-        </select>
-      </div>
-      <fieldset class="vibes">
-        <legend>Vibe</legend>
-        <div id="vibe-chips" class="chips"></div>
-      </fieldset>
-    </section>
-
-    <div class="results-bar">
-      <p id="count" class="count" role="status" aria-live="polite"></p>
-      <button type="button" id="clear-btn" class="link-btn" hidden>Clear filters</button>
-    </div>
-
-    <ul id="results" class="grid"></ul>
-
-    <div id="empty" class="empty" hidden>
-      <h2>No cafes match yet</h2>
-      <p>Try a higher budget, a lower rating, or fewer vibes.</p>
-      <button type="button" id="empty-clear" class="btn">Clear filters</button>
-    </div>
-  </main>
-
-  <footer class="wrap site-footer">
-    <p>Sample cafes for testing. The names, prices, ratings and pictures are made up.</p>
-    <p class="copyright">&copy; 2026 <a href="https://github.com/Pie0625" target="_blank" rel="noopener noreferrer">Pie</a>. All rights reserved.</p>
-  </footer>
-
-  <script src="data/cafes.js"></script>
-  <script src="js/common.js"></script>
-  <script src="js/app.js"></script>
+  <p><a href="home/">Continue to Yumcha</a></p>
 </body>
 </html>

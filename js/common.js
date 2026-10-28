@@ -2,6 +2,11 @@
 (function () {
   'use strict';
 
+  // The site's root address, worked out from where this script was loaded.
+  // Pages live in different folders (/home/, /kopi-kawan/), so links and
+  // image paths are built from this instead of being relative to the page.
+  var root = document.currentScript.src.replace(/js\/common\.js.*$/, '');
+
   function escapeHtml(text) {
     return String(text).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -29,13 +34,13 @@
   function photoHtml(cafe, className) {
     var cls = 'photo ' + (className || '');
     if (!cafe.photo) return placeholderHtml(cafe, cls);
-    return '<img class="' + cls + '" src="' + escapeHtml(cafe.photo) + '" alt="Image of ' +
+    return '<img class="' + cls + '" src="' + escapeHtml(root + cafe.photo) + '" alt="Image of ' +
       escapeHtml(cafe.name) + '" loading="lazy" data-cafe="' + escapeHtml(cafe.id) + '">';
   }
 
   // If a photo file is missing or fails to load, swap in the placeholder.
-  function watchPhotoErrors(root) {
-    root.addEventListener('error', function (e) {
+  function watchPhotoErrors(container) {
+    container.addEventListener('error', function (e) {
       var img = e.target;
       if (!img || img.tagName !== 'IMG' || !img.dataset.cafe) return;
       var cafe = (window.YUMCHA_CAFES || []).filter(function (c) { return c.id === img.dataset.cafe; })[0];
@@ -47,6 +52,7 @@
   }
 
   window.Yumcha = {
+    root: root,
     escapeHtml: escapeHtml,
     photoHtml: photoHtml,
     watchPhotoErrors: watchPhotoErrors
