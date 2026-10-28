@@ -29,7 +29,7 @@
   function photoHtml(cafe, className) {
     var cls = 'photo ' + (className || '');
     if (!cafe.photo) return placeholderHtml(cafe, cls);
-    return '<img class="' + cls + '" src="' + escapeHtml(cafe.photo) + '" alt="Photo of ' +
+    return '<img class="' + cls + '" src="' + escapeHtml(cafe.photo) + '" alt="Image of ' +
       escapeHtml(cafe.name) + '" loading="lazy" data-cafe="' + escapeHtml(cafe.id) + '">';
   }
 

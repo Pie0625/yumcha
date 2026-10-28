@@ -11,7 +11,7 @@ Yumcha helps you and your friends find a good place to *lepak* (hang out). Start
 - Each cafe shows its **price range**, **environment/vibe** (quiet, aesthetic, good for groups, etc.) and **rating**
 - Filter by spend per person, vibe and rating
 - Sort by highest rated, lowest price, or nearest to you (uses your device's location)
-- Photo on every card (a brown placeholder until a cafe has a real photo)
+- A picture on every card (drawn sample illustrations for now; swap in real photos any time)
 - Tap a card to open that cafe's own page with all the details and a link to the area on a map
 
 **Version 2 (planned)**
@@ -52,7 +52,9 @@ The cafes in `data/cafes.js` are made-up samples for testing, not real places.
    id: 'kopi-kawan',
    photo: 'images/kopi-kawan.jpg',
    ```
-Only use photos you took yourself or have permission to use. Cafes without a `photo` line keep the placeholder.
+Only use photos you took yourself or have permission to use. Cafes without a `photo` line get a brown placeholder.
+
+The pictures in `images/` right now are drawn sample illustrations (`.svg`) that stand in for photos of the made-up cafes.
 
 ## Project structure
 
@@ -65,6 +67,7 @@ yumcha/
 ├── js/detail.js    # cafe page
 ├── js/common.js    # shared helpers (photos, escaping)
 ├── data/cafes.js   # sample cafe data
+├── images/         # cafe pictures (sample illustrations for now)
 ├── icons/          # logo and favicons (logo.svg is the master)
 └── README.md
 ```

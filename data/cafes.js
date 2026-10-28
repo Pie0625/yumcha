@@ -2,9 +2,12 @@
 // These cafes are MADE UP so we don't show invented ratings for real places.
 // Coordinates are real Kuala Lumpur neighbourhoods so "near me" sorting can be tested.
 // Prices are average spend per person in RM.
+// The images in images/ are drawn illustrations standing in for photos. Replace a cafe's
+// `photo` with a real photo path (for example 'images/kopi-kawan.jpg') when you have one.
 window.YUMCHA_CAFES = [
   {
     id: 'kopi-kawan',
+    photo: 'images/kopi-kawan.svg',
     name: 'Kopi Kawan',
     area: 'Bangsar',
     priceFrom: 15,
@@ -19,6 +22,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'meja-bulat',
+    photo: 'images/meja-bulat.svg',
     name: 'Meja Bulat',
     area: 'Bukit Bintang',
     priceFrom: 20,
@@ -33,6 +37,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'sunyi-study-cafe',
+    photo: 'images/sunyi-study-cafe.svg',
     name: 'Sunyi Study Cafe',
     area: 'Titiwangsa',
     priceFrom: 12,
@@ -47,6 +52,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'loteng-coffee',
+    photo: 'images/loteng-coffee.svg',
     name: 'Loteng Coffee',
     area: 'Petaling Street',
     priceFrom: 14,
@@ -61,6 +67,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'halaman-belakang',
+    photo: 'images/halaman-belakang.svg',
     name: 'Halaman Belakang',
     area: 'Mont Kiara',
     priceFrom: 25,
@@ -75,6 +82,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'teh-dan-tepung',
+    photo: 'images/teh-dan-tepung.svg',
     name: 'Teh dan Tepung',
     area: 'Brickfields',
     priceFrom: 10,
@@ -89,6 +97,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'senja-roastery',
+    photo: 'images/senja-roastery.svg',
     name: 'Senja Roastery',
     area: 'TTDI',
     priceFrom: 18,
@@ -103,6 +112,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'rumah-kelabu',
+    photo: 'images/rumah-kelabu.svg',
     name: 'Rumah Kelabu',
     area: 'Chow Kit',
     priceFrom: 12,
@@ -117,6 +127,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'gelak-gelak-cafe',
+    photo: 'images/gelak-gelak-cafe.svg',
     name: 'Gelak Gelak Cafe',
     area: 'Setapak',
     priceFrom: 10,
@@ -131,6 +142,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'kucing-kopi',
+    photo: 'images/kucing-kopi.svg',
     name: 'Kucing Kopi',
     area: 'Sri Hartamas',
     priceFrom: 18,
@@ -145,6 +157,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'petang-petang',
+    photo: 'images/petang-petang.svg',
     name: 'Petang Petang',
     area: 'Damansara Heights',
     priceFrom: 22,
@@ -159,6 +172,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'tingkap-library-cafe',
+    photo: 'images/tingkap-library-cafe.svg',
     name: 'Tingkap Library Cafe',
     area: 'KLCC',
     priceFrom: 20,
@@ -173,6 +187,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'kedai-kopi-baharu',
+    photo: 'images/kedai-kopi-baharu.svg',
     name: 'Kedai Kopi Baharu',
     area: 'Cheras',
     priceFrom: 8,
@@ -187,6 +202,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'studio-seduh',
+    photo: 'images/studio-seduh.svg',
     name: 'Studio Seduh',
     area: 'Solaris Dutamas',
     priceFrom: 16,
@@ -201,6 +217,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'atap-biru',
+    photo: 'images/atap-biru.svg',
     name: 'Atap Biru',
     area: 'Bukit Bintang',
     priceFrom: 30,
