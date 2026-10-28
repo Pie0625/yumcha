@@ -1,0 +1,300 @@
+/* Yumcha v1. Palette is taken from the old kopitiam: checker floor tiles,
+   marble tabletops, kaya toast and sambal. */
+:root {
+  --marble: #eceeea;
+  --paper: #fbfbf8;
+  --ink: #17302c;
+  --ink-soft: #4b5f5b;
+  --tile: #1f6f66;
+  --kaya: #f4b63a;
+  --sambal: #c93a2b;
+  --line: #17302c;
+
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "Instrument Sans", system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --marble: #0f1f1c;
+    --paper: #16302b;
+    --ink: #eef1ec;
+    --ink-soft: #a9bab6;
+    --tile: #2f8f84;
+    --line: #6f8f89;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--marble);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.wrap {
+  width: min(1080px, 100% - 32px);
+  margin-inline: auto;
+}
+
+/* The one bold move: a checker floor strip across the top. */
+.tile-strip {
+  height: 18px;
+  background: conic-gradient(var(--tile) 25%, var(--marble) 0 50%, var(--tile) 0 75%, var(--marble) 0) 0 0 / 36px 36px;
+}
+
+/* Hero */
+.hero { padding: 28px 0 8px; }
+
+.brand {
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--tile);
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.8rem, 12vw, 5.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.lede {
+  max-width: 34rem;
+  margin: 16px 0 0;
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+}
+
+.locate {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin-top: 20px;
+}
+
+.locate-status {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+/* Buttons */
+.btn {
+  font: inherit;
+  font-weight: 600;
+  padding: 11px 18px;
+  min-height: 44px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--kaya);
+  color: #17302c;
+  cursor: pointer;
+}
+.btn:hover { background: #f8c55f; }
+.btn:disabled { opacity: 0.6; cursor: progress; }
+
+.link-btn {
+  font: inherit;
+  font-weight: 600;
+  padding: 8px 4px;
+  border: 0;
+  background: none;
+  color: var(--tile);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+:where(a, button, select, input):focus-visible {
+  outline: 3px solid var(--sambal);
+  outline-offset: 2px;
+}
+
+/* Filters */
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px 16px;
+  margin-top: 28px;
+  padding: 18px 0;
+  border-top: 2px solid var(--line);
+  border-bottom: 2px solid var(--line);
+}
+
+.field label,
+.vibes legend {
+  display: block;
+  margin-bottom: 6px;
+  padding: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+select {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+}
+
+.vibes {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip {
+  font: inherit;
+  font-size: 0.95rem;
+  min-height: 40px;
+  padding: 6px 14px;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+.chip[aria-pressed="true"] {
+  background: var(--tile);
+  border-color: var(--tile);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Results */
+.results-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  margin: 14px 0 6px;
+}
+.count { margin: 0; font-weight: 600; }
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 18px;
+}
+
+.cafe {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  background: var(--paper);
+  border: 2px solid var(--line);
+  border-radius: 6px 22px 6px 22px;
+}
+
+.cafe-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cafe h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.45rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.cafe-place { margin: 4px 0 0; font-size: 0.95rem; color: var(--ink-soft); }
+
+.rating {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--kaya);
+  border: 2px solid var(--ink);
+  color: #17302c;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.price { margin: 0; font-weight: 600; }
+.price span { font-weight: 400; color: var(--ink-soft); }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tags li {
+  padding: 2px 10px;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.88rem;
+}
+
+.blurb { margin: 0; max-width: 60ch; }
+
+.facts {
+  margin: auto 0 0;
+  padding-top: 10px;
+  border-top: 1.5px dashed var(--line);
+  display: grid;
+  gap: 2px;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+.facts div { display: flex; gap: 6px; }
+.facts dt { font-weight: 600; color: var(--ink); }
+.facts dd { margin: 0; }
+
+.distance { color: var(--tile); font-weight: 600; }
+
+/* Empty state */
+.empty { padding: 36px 0; }
+.empty h2 { margin: 0 0 6px; font-family: var(--font-display); font-size: 1.6rem; }
+.empty p { margin: 0 0 16px; color: var(--ink-soft); }
+
+.site-footer {
+  margin-top: 48px;
+  padding: 18px 0 40px;
+  border-top: 2px solid var(--line);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.site-footer p { margin: 0; }
+
+[hidden] { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
