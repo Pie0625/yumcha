@@ -65,6 +65,7 @@ yumcha/
 ├── js/detail.js    # cafe page
 ├── js/common.js    # shared helpers (photos, escaping)
 ├── data/cafes.js   # sample cafe data
+├── icons/          # logo and favicons (logo.svg is the master)
 └── README.md
 ```
 
