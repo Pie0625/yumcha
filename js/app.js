@@ -26,11 +26,7 @@
     locateStatus: document.getElementById('locate-status')
   };
 
-  function escapeHtml(text) {
-    return String(text).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
-  }
+  var escapeHtml = window.Yumcha.escapeHtml;
 
   function averagePrice(cafe) {
     return (cafe.priceFrom + cafe.priceTo) / 2;
@@ -91,8 +87,10 @@
     var tags = c.vibes.map(function (v) { return '<li>' + escapeHtml(v) + '</li>'; }).join('');
 
     return '<li class="cafe">' +
+      window.Yumcha.photoHtml(c, 'cafe-photo') +
+      '<div class="cafe-body">' +
       '<div class="cafe-top">' +
-        '<div><h2>' + escapeHtml(c.name) + '</h2>' +
+        '<div><h2><a class="cafe-link" href="cafe.html?id=' + encodeURIComponent(c.id) + '">' + escapeHtml(c.name) + '</a></h2>' +
         '<p class="cafe-place">' + escapeHtml(c.area) + '</p></div>' +
         '<span class="rating" aria-label="Rated ' + c.rating.toFixed(1) + ' out of 5">' + c.rating.toFixed(1) + '</span>' +
       '</div>' +
@@ -103,6 +101,7 @@
         '<div><dt>Open</dt><dd>' + escapeHtml(c.hours) + '</dd></div>' +
         '<div><dt>Good for</dt><dd>' + escapeHtml(c.goodFor) + '</dd></div>' +
       '</dl>' +
+      '</div>' +
     '</li>';
   }
 
@@ -185,6 +184,7 @@
   els.emptyClear.addEventListener('click', clearFilters);
   els.locateBtn.addEventListener('click', useLocation);
 
+  window.Yumcha.watchPhotoErrors(els.results);
   buildChips();
   render();
 })();
