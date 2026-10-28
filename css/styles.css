@@ -39,9 +39,6 @@ body {
 .hero { padding: 44px 0 8px; }
 
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   margin: 0 0 16px;
   font-family: var(--font-display);
   font-weight: 700;
@@ -253,9 +250,6 @@ select:hover { border-color: var(--text-soft); }
 /* Cafe page */
 .topbar { padding: 22px 0 0; }
 .brand-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.05rem;
