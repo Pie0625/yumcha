@@ -1,28 +1,20 @@
-/* Yumcha v1. Palette is taken from the old kopitiam: checker floor tiles,
-   marble tabletops, kaya toast and sambal. */
+/* Yumcha v1. Dark espresso theme: roasted browns, latte text, one caramel accent. */
 :root {
-  --marble: #eceeea;
-  --paper: #fbfbf8;
-  --ink: #17302c;
-  --ink-soft: #4b5f5b;
-  --tile: #1f6f66;
-  --kaya: #f4b63a;
-  --sambal: #c93a2b;
-  --line: #17302c;
+  color-scheme: dark;
 
+  --bg: #17100c;        /* espresso */
+  --surface: #211711;   /* roast, for cards and fields */
+  --surface-2: #2b1f17; /* hover and pressed surfaces */
+  --line: #3b2c22;      /* hairlines */
+  --text: #f0e6d8;      /* latte */
+  --text-soft: #b5a28f; /* muted latte */
+  --accent: #d19a5f;    /* caramel */
+  --accent-ink: #1c120c;/* text on caramel */
+  --focus: #f2c48d;
+
+  --radius: 16px;
   --font-display: "Bricolage Grotesque", system-ui, sans-serif;
   --font-body: "Instrument Sans", system-ui, sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --marble: #0f1f1c;
-    --paper: #16302b;
-    --ink: #eef1ec;
-    --ink-soft: #a9bab6;
-    --tile: #2f8f84;
-    --line: #6f8f89;
-  }
 }
 
 * { box-sizing: border-box; }
@@ -31,8 +23,8 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--marble);
-  color: var(--ink);
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.55;
@@ -43,37 +35,31 @@ body {
   margin-inline: auto;
 }
 
-/* The one bold move: a checker floor strip across the top. */
-.tile-strip {
-  height: 18px;
-  background: conic-gradient(var(--tile) 25%, var(--marble) 0 50%, var(--tile) 0 75%, var(--marble) 0) 0 0 / 36px 36px;
-}
-
 /* Hero */
-.hero { padding: 28px 0 8px; }
+.hero { padding: 44px 0 8px; }
 
 .brand {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.05rem;
-  color: var(--tile);
+  color: var(--accent);
 }
 
 h1 {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.8rem, 12vw, 5.6rem);
+  font-size: clamp(2.8rem, 12vw, 5.4rem);
   line-height: 0.95;
   letter-spacing: -0.03em;
 }
 
 .lede {
   max-width: 34rem;
-  margin: 16px 0 0;
+  margin: 18px 0 0;
   font-size: 1.1rem;
-  color: var(--ink-soft);
+  color: var(--text-soft);
 }
 
 .locate {
@@ -81,28 +67,28 @@ h1 {
   flex-wrap: wrap;
   align-items: center;
   gap: 8px 16px;
-  margin-top: 20px;
+  margin-top: 22px;
 }
 
 .locate-status {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--ink-soft);
+  color: var(--text-soft);
 }
 
 /* Buttons */
 .btn {
   font: inherit;
   font-weight: 600;
-  padding: 11px 18px;
+  padding: 11px 20px;
   min-height: 44px;
-  border: 2px solid var(--ink);
+  border: 0;
   border-radius: 999px;
-  background: var(--kaya);
-  color: #17302c;
+  background: var(--accent);
+  color: var(--accent-ink);
   cursor: pointer;
 }
-.btn:hover { background: #f8c55f; }
+.btn:hover { background: #dba972; }
 .btn:disabled { opacity: 0.6; cursor: progress; }
 
 .link-btn {
@@ -111,14 +97,14 @@ h1 {
   padding: 8px 4px;
   border: 0;
   background: none;
-  color: var(--tile);
+  color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 3px;
   cursor: pointer;
 }
 
 :where(a, button, select, input):focus-visible {
-  outline: 3px solid var(--sambal);
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
 
@@ -127,10 +113,10 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 14px 16px;
-  margin-top: 28px;
-  padding: 18px 0;
-  border-top: 2px solid var(--line);
-  border-bottom: 2px solid var(--line);
+  margin-top: 32px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .field label,
@@ -140,6 +126,7 @@ h1 {
   padding: 0;
   font-size: 0.9rem;
   font-weight: 600;
+  color: var(--text-soft);
 }
 
 select {
@@ -147,11 +134,12 @@ select {
   min-height: 44px;
   padding: 8px 12px;
   font: inherit;
-  color: var(--ink);
-  background: var(--paper);
-  border: 2px solid var(--line);
-  border-radius: 10px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
 }
+select:hover { border-color: var(--text-soft); }
 
 .vibes {
   grid-column: 1 / -1;
@@ -167,17 +155,18 @@ select {
   font: inherit;
   font-size: 0.95rem;
   min-height: 40px;
-  padding: 6px 14px;
-  border: 2px solid var(--line);
+  padding: 6px 15px;
+  border: 1px solid var(--line);
   border-radius: 999px;
-  background: transparent;
-  color: var(--ink);
+  background: var(--surface);
+  color: var(--text);
   cursor: pointer;
 }
+.chip:hover { border-color: var(--text-soft); }
 .chip[aria-pressed="true"] {
-  background: var(--tile);
-  border-color: var(--tile);
-  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
   font-weight: 600;
 }
 
@@ -188,9 +177,9 @@ select {
   align-items: center;
   gap: 12px;
   min-height: 44px;
-  margin: 14px 0 6px;
+  margin: 16px 0 8px;
 }
-.count { margin: 0; font-weight: 600; }
+.count { margin: 0; font-weight: 600; color: var(--text-soft); }
 
 .grid {
   list-style: none;
@@ -198,17 +187,17 @@ select {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-  gap: 18px;
+  gap: 16px;
 }
 
 .cafe {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 18px;
-  background: var(--paper);
-  border: 2px solid var(--line);
-  border-radius: 6px 22px 6px 22px;
+  gap: 12px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
 }
 
 .cafe-top {
@@ -222,30 +211,30 @@ select {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.45rem;
+  font-size: 1.4rem;
   line-height: 1.1;
   letter-spacing: -0.01em;
 }
 
-.cafe-place { margin: 4px 0 0; font-size: 0.95rem; color: var(--ink-soft); }
+.cafe-place { margin: 4px 0 0; font-size: 0.95rem; color: var(--text-soft); }
 
 .rating {
   flex: none;
   display: grid;
   place-items: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--kaya);
-  border: 2px solid var(--ink);
-  color: #17302c;
+  min-width: 48px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.15rem;
+  font-weight: 700;
+  font-size: 1rem;
 }
 
 .price { margin: 0; font-weight: 600; }
-.price span { font-weight: 400; color: var(--ink-soft); }
+.price span { font-weight: 400; color: var(--text-soft); }
 
 .tags {
   display: flex;
@@ -257,39 +246,40 @@ select {
 }
 .tags li {
   padding: 2px 10px;
-  border: 1.5px solid var(--line);
   border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text-soft);
   font-size: 0.88rem;
 }
 
-.blurb { margin: 0; max-width: 60ch; }
+.blurb { margin: 0; max-width: 60ch; color: var(--text); }
 
 .facts {
   margin: auto 0 0;
-  padding-top: 10px;
-  border-top: 1.5px dashed var(--line);
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
   display: grid;
   gap: 2px;
   font-size: 0.92rem;
-  color: var(--ink-soft);
+  color: var(--text-soft);
 }
 .facts div { display: flex; gap: 6px; }
-.facts dt { font-weight: 600; color: var(--ink); }
+.facts dt { font-weight: 600; color: var(--text); }
 .facts dd { margin: 0; }
 
-.distance { color: var(--tile); font-weight: 600; }
+.distance { color: var(--accent); font-weight: 600; }
 
 /* Empty state */
 .empty { padding: 36px 0; }
 .empty h2 { margin: 0 0 6px; font-family: var(--font-display); font-size: 1.6rem; }
-.empty p { margin: 0 0 16px; color: var(--ink-soft); }
+.empty p { margin: 0 0 16px; color: var(--text-soft); }
 
 .site-footer {
   margin-top: 48px;
-  padding: 18px 0 40px;
-  border-top: 2px solid var(--line);
+  padding: 20px 0 40px;
+  border-top: 1px solid var(--line);
   font-size: 0.9rem;
-  color: var(--ink-soft);
+  color: var(--text-soft);
 }
 .site-footer p { margin: 0; }
 
