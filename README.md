@@ -11,7 +11,7 @@ Yumcha helps you and your friends find a good place to *lepak* (hang out). Start
 - Each cafe shows its **price range**, **environment/vibe** (quiet, aesthetic, good for groups, etc.) and **rating**
 - Filter by spend per person, vibe and rating
 - Sort by highest rated, lowest price, or nearest to you (uses your device's location)
-- A picture on every card (drawn sample illustrations for now; swap in real photos any time)
+- A picture on every card, and a swipeable photo gallery on each cafe's page (drawn sample illustrations for now; swap in real photos any time)
 - Tap a card to open that cafe's own page (like `/kopi-kawan/`) with all the details and a link to the area on a map
 
 **Version 2 (planned)**
@@ -54,15 +54,23 @@ node tools/build-pages.js
 
 Use lowercase letters, numbers and dashes in the `id`. Then commit the new folder along with the data change.
 
-### Adding a real photo to a cafe
+### Adding photos to a cafe
 
-1. Put the image in an `images/` folder, for example `images/kopi-kawan.jpg`. Landscape photos around 1200 px wide work best.
-2. In `data/cafes.js`, add a `photo` line to that cafe:
-   ```js
-   id: 'kopi-kawan',
-   photo: 'images/kopi-kawan.jpg',
-   ```
-Only use photos you took yourself or have permission to use. Cafes without a `photo` line get a brown placeholder.
+A cafe can have one photo or several. In `data/cafes.js`:
+
+```js
+id: 'kopi-kawan',
+photos: [
+  'https://res.cloudinary.com/your-name/image/upload/kopi-kawan-1.jpg',
+  'https://res.cloudinary.com/your-name/image/upload/kopi-kawan-2.jpg',
+],
+```
+
+- **Links (recommended):** upload photos to an image host (such as Cloudinary or Supabase Storage) and paste each link. Nothing is added to this repository.
+- **Files:** or put images in the `images/` folder and write the path (`'images/kopi-kawan-1.jpg'`).
+- The cafe list shows the first photo. The cafe page shows all of them as a swipeable gallery.
+- Landscape photos around 1200 px wide work best.
+- Only use photos you took yourself or have permission to use. Cafes with no photo get a brown placeholder, and a link that fails to load falls back to the placeholder too.
 
 The pictures in `images/` right now are drawn sample illustrations (`.svg`) that stand in for photos of the made-up cafes.
 
