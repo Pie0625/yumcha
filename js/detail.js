@@ -58,7 +58,7 @@
       '<div><dt>Area</dt><dd>' + esc(cafe.area) + '</dd></div>' +
     '</dl>' +
     '<a class="btn btn-link" href="' + mapUrl + '" target="_blank" rel="noopener noreferrer">View area on map</a>' +
-    '<section class="experiences" aria-labelledby="exp-title">' +
+    '<section class="experiences" id="experiences" aria-labelledby="exp-title">' +
       '<h2 id="exp-title">Experiences</h2>' +
       '<p>Tips and stories from people who have been here will show up in this space. Coming in a later version.</p>' +
     '</section>';

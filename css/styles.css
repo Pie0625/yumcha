@@ -451,3 +451,130 @@ select:hover { border-color: var(--text-soft); }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* Community */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.experiences.is-live {
+  border-style: solid;
+  background: var(--surface);
+}
+.exp-summary { font-weight: 600; }
+.experiences .exp-summary { margin-bottom: 14px; }
+
+input,
+textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+textarea { min-height: 110px; resize: vertical; line-height: 1.5; }
+input:hover,
+textarea:hover { border-color: var(--text-soft); }
+input[type="radio"] { width: auto; min-height: 0; }
+
+.exp-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.exp-cta p { margin: 0; color: var(--text); }
+.exp-account { margin: 0 0 14px; color: var(--text-soft); }
+.exp-note { margin: 0; font-size: 0.92rem; color: var(--text-soft); }
+
+.exp-form { display: grid; gap: 16px; }
+.exp-form .field label,
+.dialog .field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+.exp-count,
+.field-hint { margin: 4px 0 0; font-size: 0.85rem; color: var(--text-soft); }
+
+.rate { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0; padding: 0; border: 0; min-width: 0; }
+.rate legend { width: 100%; margin-bottom: 6px; padding: 0; font-size: 0.9rem; font-weight: 600; color: var(--text-soft); }
+.rate-opt { position: relative; }
+.rate-opt input { position: absolute; opacity: 0; }
+.rate-opt span {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  cursor: pointer;
+}
+.rate-opt:hover span { border-color: var(--text-soft); }
+.rate-opt input:checked + span {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+}
+.rate-opt input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
+.rate-hint { margin: 0 0 0 6px; font-size: 0.85rem; color: var(--text-soft); }
+
+.form-message { margin: 0; min-height: 1.4em; color: #f0a58a; font-size: 0.95rem; }
+.form-message.is-ok { color: var(--accent); }
+
+.exp-list { list-style: none; margin: 18px 0 0; padding: 0; }
+.exp-item { padding: 16px 0; border-top: 1px solid var(--line); }
+.exp-empty { padding: 8px 0; color: var(--text-soft); }
+.exp-head { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+.exp-head time { font-size: 0.9rem; color: var(--text-soft); }
+.exp-you {
+  padding: 0 9px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 0.8rem;
+  color: var(--text-soft);
+}
+.exp-body { margin: 8px 0 4px; max-width: 60ch; white-space: pre-wrap; overflow-wrap: anywhere; }
+.exp-actions { display: flex; gap: 12px; }
+.exp-actions .link-btn { font-size: 0.9rem; font-weight: 500; color: var(--text-soft); }
+.exp-actions .link-btn:hover { color: var(--text); }
+
+.stars { color: var(--accent); letter-spacing: 1px; }
+.stars-off { color: var(--line); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+.btn-ghost:hover { background: var(--surface-2); border-color: var(--text-soft); }
+
+.dialog {
+  width: min(440px, calc(100% - 32px));
+  max-height: calc(100% - 32px);
+  padding: 0;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.dialog::backdrop { background: rgba(8, 5, 3, 0.75); }
+.dialog-body { display: grid; gap: 16px; padding: 22px; }
+.dialog h2 { margin: 0; font-family: var(--font-display); font-size: 1.4rem; }
+.dialog form { display: grid; gap: 14px; }
+.dialog-or { margin: 12px 0 0; text-align: center; font-size: 0.9rem; color: var(--text-soft); }
+.auth-google { display: grid; }
+.dialog-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+.seg { display: flex; flex-wrap: wrap; gap: 8px; }
+.reasons { display: grid; gap: 8px; margin: 0 0 6px; padding: 0; border: 0; min-width: 0; }
+.reason { display: flex; align-items: center; gap: 10px; min-height: 40px; cursor: pointer; }
