@@ -27,9 +27,23 @@
   var mapUrl = 'https://www.google.com/maps/search/?api=1&query=' +
     Number(cafe.lat) + ',' + Number(cafe.lng);
 
+  // One photo shows as a single image. Several show as a swipeable gallery.
+  function galleryHtml() {
+    var count = window.Yumcha.photoList(cafe).length;
+    if (count < 2) return window.Yumcha.photoHtml(cafe, 'detail-photo');
+    var slides = '';
+    for (var i = 0; i < count; i++) slides += window.Yumcha.photoHtml(cafe, 'detail-photo', i);
+    return '<div class="gallery">' +
+      '<div class="gallery-track" tabindex="0" role="group" aria-label="Photos of ' + esc(cafe.name) + '">' + slides + '</div>' +
+      '<button type="button" class="gallery-btn gallery-prev" aria-label="Previous photo">&#8249;</button>' +
+      '<button type="button" class="gallery-btn gallery-next" aria-label="Next photo">&#8250;</button>' +
+      '<p class="gallery-count" aria-live="polite">1 of ' + count + '</p>' +
+    '</div>';
+  }
+
   root.innerHTML =
     '<a class="back-link" href="' + homeUrl + '">Back to all cafes</a>' +
-    window.Yumcha.photoHtml(cafe, 'detail-photo') +
+    galleryHtml() +
     '<div class="detail-head">' +
       '<div><h1 class="detail-title">' + esc(cafe.name) + '</h1>' +
       '<p class="cafe-place">' + esc(cafe.area) + '</p></div>' +
@@ -44,8 +58,25 @@
       '<div><dt>Area</dt><dd>' + esc(cafe.area) + '</dd></div>' +
     '</dl>' +
     '<a class="btn btn-link" href="' + mapUrl + '" target="_blank" rel="noopener noreferrer">View area on map</a>' +
-    '<section class="experiences" aria-labelledby="exp-title">' +
+    '<section class="experiences" id="experiences" aria-labelledby="exp-title">' +
       '<h2 id="exp-title">Experiences</h2>' +
       '<p>Tips and stories from people who have been here will show up in this space. Coming in a later version.</p>' +
     '</section>';
+
+  // Gallery buttons and the "2 of 3" counter.
+  var track = root.querySelector('.gallery-track');
+  if (track) {
+    var counter = root.querySelector('.gallery-count');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var total = track.children.length;
+    var go = function (step) {
+      track.scrollBy({ left: step * track.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
+    };
+    root.querySelector('.gallery-prev').addEventListener('click', function () { go(-1); });
+    root.querySelector('.gallery-next').addEventListener('click', function () { go(1); });
+    track.addEventListener('scroll', function () {
+      var index = Math.round(track.scrollLeft / track.clientWidth);
+      counter.textContent = (Math.min(index, total - 1) + 1) + ' of ' + total;
+    }, { passive: true });
+  }
 })();

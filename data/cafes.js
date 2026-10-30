@@ -2,12 +2,14 @@
 // These cafes are MADE UP so we don't show invented ratings for real places.
 // Coordinates are real Kuala Lumpur neighbourhoods so "near me" sorting can be tested.
 // Prices are average spend per person in RM.
-// The images in images/ are drawn illustrations standing in for photos. Replace a cafe's
-// `photo` with a real photo path (for example 'images/kopi-kawan.jpg') when you have one.
+// The images in images/ are drawn illustrations standing in for photos.
+// A cafe can have one `photo: '...'` or several `photos: ['...', '...']`. Each is either a
+// full link from an image host (https://...) or a path inside the site (images/kopi-kawan.jpg).
+// Only the first photo shows on the card; the cafe page shows them all as a gallery.
 window.YUMCHA_CAFES = [
   {
     id: 'kopi-kawan',
-    photo: 'images/kopi-kawan.svg',
+    photos: ['images/kopi-kawan.svg', 'images/kopi-kawan-2.svg', 'images/kopi-kawan-3.svg'],
     name: 'Kopi Kawan',
     area: 'Bangsar',
     priceFrom: 15,
@@ -142,7 +144,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'kucing-kopi',
-    photo: 'images/kucing-kopi.svg',
+    photos: ['images/kucing-kopi.svg', 'images/kucing-kopi-2.svg'],
     name: 'Kucing Kopi',
     area: 'Sri Hartamas',
     priceFrom: 18,
@@ -217,7 +219,7 @@ window.YUMCHA_CAFES = [
   },
   {
     id: 'atap-biru',
-    photo: 'images/atap-biru.svg',
+    photos: ['images/atap-biru.svg', 'images/atap-biru-2.svg', 'images/atap-biru-3.svg'],
     name: 'Atap Biru',
     area: 'Bukit Bintang',
     priceFrom: 30,

@@ -30,12 +30,26 @@
       '<span>' + escapeHtml(cafe.name.charAt(0)) + '</span></div>';
   }
 
-  // Use the cafe's photo when it has one (the `photo` field in data/cafes.js).
-  function photoHtml(cafe, className) {
+  // A cafe can have `photos: [...]` (several) or the older `photo: '...'` (one).
+  function photoList(cafe) {
+    if (Array.isArray(cafe.photos) && cafe.photos.length) return cafe.photos;
+    return cafe.photo ? [cafe.photo] : [];
+  }
+
+  // A photo is either a full link (https://...) from an image host, or a path inside this site.
+  function photoUrl(photo) {
+    return /^https?:\/\//i.test(photo) ? photo : root + photo;
+  }
+
+  // One image for the cafe (the first by default); a placeholder if it has none.
+  function photoHtml(cafe, className, index) {
     var cls = 'photo ' + (className || '');
-    if (!cafe.photo) return placeholderHtml(cafe, cls);
-    return '<img class="' + cls + '" src="' + escapeHtml(root + cafe.photo) + '" alt="Image of ' +
-      escapeHtml(cafe.name) + '" loading="lazy" data-cafe="' + escapeHtml(cafe.id) + '">';
+    var list = photoList(cafe);
+    var photo = list[index || 0];
+    if (!photo) return placeholderHtml(cafe, cls);
+    return '<img class="' + cls + '" src="' + escapeHtml(photoUrl(photo)) + '" alt="Image ' +
+      ((index || 0) + 1) + ' of ' + escapeHtml(cafe.name) + '" loading="lazy" data-cafe="' +
+      escapeHtml(cafe.id) + '">';
   }
 
   // If a photo file is missing or fails to load, swap in the placeholder.
@@ -54,6 +68,7 @@
   window.Yumcha = {
     root: root,
     escapeHtml: escapeHtml,
+    photoList: photoList,
     photoHtml: photoHtml,
     watchPhotoErrors: watchPhotoErrors
   };
