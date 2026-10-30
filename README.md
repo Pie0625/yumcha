@@ -21,9 +21,16 @@ Yumcha helps you and your friends find a good place to *lepak* (hang out). Start
 - Delete your own post; report anyone else's
 - Password reset by email
 
+**Version 3 (built, needs `supabase/community.sql` once)**
+- A separate **Community** page, reachable from the menu on every page
+- **Recommend a place**: pick one of the cafes on the site or any place, add a Google Maps link, up to 3 photos, and rate it for **environment**, **food & drinks** and **price** (5 = great value)
+- **Start a discussion** with a plain text post
+- **React** to posts with Like, Yum or Helpful
+- A "Recommend this cafe" button on each cafe page opens the form with that cafe filled in
+- Photos are shrunk to 1600px JPEGs in the browser before uploading, which also removes hidden location data
+
 **Next**
-- 🚧 Photos in posts
-- 🚧 Replies and discussion threads
+- 🚧 Replies and comment threads
 
 **Later**
 - 🚧 Other kinds of places (restaurants, dessert spots, activities)
@@ -99,9 +106,13 @@ The community needs a free Supabase project. Until you do this, cafe pages just 
    4. In `js/config.js`, set `enableGoogle: true`.
 7. Commit the `js/config.js` change, merge it into `main`, and open a cafe page on your site.
 
+### Turn on the Community page
+
+After `schema.sql` has run, do the same with the second file: **SQL Editor**, paste all of `supabase/community.sql`, press **Run**. It creates the posts, reactions and reports tables, their security rules, and a public storage bucket called `post-photos` (JPEG only, 2 MB per photo, and people can only add or delete files in their own folder). It is safe to run again.
+
 ### Looking after the community
 
-- **Read reports and remove bad posts:** in Supabase, open **Table Editor**. The `reports` table lists what people reported. To remove a post, delete its row from `experiences`.
+- **Read reports and remove bad posts:** in Supabase, open **Table Editor**. The `reports` table lists what people reported. To remove a post, delete its row from `experiences`. For the Community page, read `post_reports` and delete the post from the `posts` table. Photo files stay in **Storage, then post-photos** until you delete them there.
 - **Posts and names are public.** People choose the name shown with their posts, and emails are never shown. Consider adding a short privacy note and community rules before you share the site widely, because you will be holding other people's emails.
 - **Editing a post:** there is no edit button on purpose. People delete a post and write a new one.
 
@@ -117,10 +128,13 @@ yumcha/
 ├── js/app.js       # list page: filters, sorting, location
 ├── js/detail.js    # cafe page
 ├── js/common.js    # shared helpers (photos, escaping)
-├── js/community.js # sign in, posts, reports on the cafe pages
+├── community/      # the Community page (yumcha/community/)
+├── js/auth.js      # shared Supabase connection, sign in and report dialogs
+├── js/community.js # experiences on the cafe pages
+├── js/feed.js      # the Community page: posts, photos, ratings, reactions
 ├── js/config.js    # your Supabase project URL and public key
 ├── js/vendor/      # Supabase browser library (a copy, so no outside download)
-├── supabase/       # schema.sql: the tables and security rules to run once
+├── supabase/       # schema.sql and community.sql: tables and security rules, run once each
 ├── data/cafes.js   # sample cafe data
 ├── images/         # cafe pictures (sample illustrations for now)
 ├── icons/          # logo and favicons (logo.svg is the master)
@@ -135,7 +149,8 @@ yumcha/
 - [x] Cafe detail page
 - [ ] Map view
 - [x] Accounts, posts and reports (needs the Supabase setup)
-- [ ] Replies and photos in posts
+- [x] Community page with recommendations, photos, ratings and reactions
+- [ ] Replies and comment threads
 - [ ] Package as a mobile app
 
 ## Contributing
