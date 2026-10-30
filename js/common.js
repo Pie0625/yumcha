@@ -1,4 +1,4 @@
-// Helpers shared by the list page (index.html) and the cafe page (cafe.html).
+// Helpers shared by every page.
 (function () {
   'use strict';
 
@@ -65,11 +65,56 @@
     }, true);
   }
 
+
+  function starsHtml(n) {
+    n = Math.max(0, Math.min(5, Number(n) || 0));
+    return '<span class="stars" role="img" aria-label="Rated ' + n + ' out of 5">' +
+      '★'.repeat(n) + '<span class="stars-off">' + '★'.repeat(5 - n) + '</span></span>';
+  }
+
+  function formatDate(iso) {
+    var d = new Date(iso);
+    return isNaN(d) ? '' : d.toLocaleDateString('en-MY', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+
+  // Short, plain messages for database and upload errors. `duplicate` is shown when the same thing is done twice.
+  function friendlyError(err, duplicate) {
+    var msg = String((err && err.message) || '');
+    if (err && err.code === '23505') return duplicate || 'You have already done this.';
+    if (err && err.code === '23514') return 'That did not meet the rules for posts. Check the lengths and ratings.';
+    if ((err && err.code === '42501') || /row-level security|jwt/i.test(msg)) return 'Please sign in again and try once more.';
+    if (/payload too large|exceeded the maximum|too large/i.test(msg)) return 'A photo is too big. Try a smaller one.';
+    if (/mime type|not supported/i.test(msg)) return 'Only photos can be uploaded.';
+    if (/failed to fetch|network|load failed/i.test(msg)) return 'Could not reach the server. Check your connection and try again.';
+    return 'Something went wrong. Please try again.';
+  }
+
+  // Shows a message under a form. `ok` makes it a success message.
+  function say(el, text, ok) {
+    el.textContent = text;
+    el.className = 'form-message' + (ok ? ' is-ok' : '');
+  }
+
+  function buildDialog(id, html, extraClass) {
+    var d = document.createElement('dialog');
+    d.className = 'dialog' + (extraClass ? ' ' + extraClass : '');
+    d.id = id;
+    d.innerHTML = '<div class="dialog-body">' + html + '</div>';
+    d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+    document.body.appendChild(d);
+    return d;
+  }
+
   window.Yumcha = {
     root: root,
     escapeHtml: escapeHtml,
     photoList: photoList,
     photoHtml: photoHtml,
-    watchPhotoErrors: watchPhotoErrors
+    watchPhotoErrors: watchPhotoErrors,
+    starsHtml: starsHtml,
+    formatDate: formatDate,
+    friendlyError: friendlyError,
+    say: say,
+    buildDialog: buildDialog
   };
 })();
