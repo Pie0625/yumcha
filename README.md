@@ -15,11 +15,10 @@ Yumcha helps you and your friends find a good place to *lepak* (hang out). Start
 - Tap a card to open that cafe's own page (like `/kopi-kawan/`) with all the details and a link to the area on a map
 
 **Version 2 (built, needs one-time setup: see "Set up the community" below)**
-- Sign in with Google or with email and password
+- Sign in on a **Sign in page** (`/login/`) with Google, or with a one-time code emailed to you (no password to remember)
 - Share an experience on a cafe's page: a 1 to 5 rating and a short text (one per person per cafe)
 - Everyone sees the posts and the community average rating
 - Delete your own post; report anyone else's
-- Password reset by email
 
 **Version 3 (built, needs `supabase/community.sql` once)**
 - A separate **Community** page, reachable from the menu on every page
@@ -98,7 +97,13 @@ The community needs a free Supabase project. Until you do this, cafe pages just 
 4. **Tell Supabase where your site lives.** Open **Authentication, then URL Configuration**. Set **Site URL** to `https://pie0625.github.io/yumcha/` and add these under **Redirect URLs**:
    - `https://pie0625.github.io/yumcha/**`
    - `http://localhost:8000/**` (for testing on your computer)
-5. **Email sign-in works straight away.** By default Supabase asks people to confirm their email. The built-in email sender has a low hourly limit, so for real use add your own email service under **Authentication, then SMTP Settings**.
+5. **Make the email send a code.** People sign in by typing a code from their email. Supabase sends a link unless you change the templates. Open **Authentication, then Emails (Email Templates)** and edit both **Magic Link** and **Confirm signup**: replace the link in the body with the code, for example:
+   ```html
+   <h2>Your Yumcha code</h2>
+   <p>Type this code to sign in: <strong>{{ .Token }}</strong></p>
+   <p>If you did not ask for it, ignore this email.</p>
+   ```
+   Open **Authentication, then Sign In / Providers, then Email** and check that **Enable email provider** is on. You can change the code length there too (the site accepts 6 to 10 digits). The built-in email sender only allows a few emails an hour, so for real use add your own email service under **Authentication, then SMTP Settings**.
 6. **Optional: Google sign-in.**
    1. In the [Google Cloud console](https://console.cloud.google.com), create a project, then an **OAuth client ID** of type **Web application**.
    2. Add this **Authorized redirect URI**: `https://YOUR-PROJECT-REF.supabase.co/auth/v1/callback` (Supabase shows the exact address on the Google provider page).
@@ -129,7 +134,9 @@ yumcha/
 ├── js/detail.js    # cafe page
 ├── js/common.js    # shared helpers (photos, escaping)
 ├── community/      # the Community page (yumcha/community/)
-├── js/auth.js      # shared Supabase connection, sign in and report dialogs
+├── login/          # the Sign in page (yumcha/login/)
+├── js/auth.js      # shared Supabase connection, sign out, report dialog
+├── js/login.js     # the Sign in page: Google or emailed code
 ├── js/community.js # experiences on the cafe pages
 ├── js/feed.js      # the Community page: posts, photos, ratings, reactions
 ├── js/config.js    # your Supabase project URL and public key
