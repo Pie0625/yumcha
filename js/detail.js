@@ -57,7 +57,12 @@
       '<div><dt>Good for</dt><dd>' + esc(cafe.goodFor) + '</dd></div>' +
       '<div><dt>Area</dt><dd>' + esc(cafe.area) + '</dd></div>' +
     '</dl>' +
-    '<a class="btn btn-link" href="' + mapUrl + '" target="_blank" rel="noopener noreferrer">View area on map</a>' +
+    '<div class="detail-actions">' +
+      '<a class="btn btn-link" href="' + mapUrl + '" target="_blank" rel="noopener noreferrer">View area on map</a>' +
+      (window.Yumcha.auth && window.Yumcha.auth.enabled
+        ? '<a class="btn btn-ghost btn-link" href="' + window.Yumcha.root + 'community/?new=1&cafe=' + encodeURIComponent(cafe.id) + '">Recommend this cafe</a>'
+        : '') +
+    '</div>' +
     '<section class="experiences" id="experiences" aria-labelledby="exp-title">' +
       '<h2 id="exp-title">Experiences</h2>' +
       '<p>Tips and stories from people who have been here will show up in this space. Coming in a later version.</p>' +

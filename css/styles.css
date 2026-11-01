@@ -35,6 +35,29 @@ body {
   margin-inline: auto;
 }
 
+/* Site navigation */
+.site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.site-links { display: flex; gap: 4px; }
+.site-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  color: var(--text-soft);
+  font-weight: 600;
+  text-decoration: none;
+}
+.site-links a:hover { color: var(--text); }
+.site-links a[aria-current="page"] { background: var(--surface-2); color: var(--text); }
+.detail-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
 /* Hero */
 .hero { padding: 44px 0 8px; }
 
@@ -578,3 +601,57 @@ input[type="radio"] { width: auto; min-height: 0; }
 .seg { display: flex; flex-wrap: wrap; gap: 8px; }
 .reasons { display: grid; gap: 8px; margin: 0 0 6px; padding: 0; border: 0; min-width: 0; }
 .reason { display: flex; align-items: center; gap: 10px; min-height: 40px; cursor: pointer; }
+
+/* Community page */
+.hero-compact { padding-bottom: 28px; }
+.feed-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; margin-top: 28px; }
+.feed-note { margin: 18px 0; color: var(--text-soft); }
+.feed-note h2 { margin: 0 0 6px; font-family: var(--font-display); color: var(--text); }
+.feed { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 16px; }
+.feed-more { display: flex; justify-content: center; margin: 22px 0 8px; }
+
+.post { padding: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.post .exp-body { max-width: none; }
+.post-kind { padding: 0 9px; border-radius: 999px; border: 1px solid var(--line); font-size: 0.8rem; color: var(--text-soft); }
+.post-place { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 10px 0 0; overflow-wrap: anywhere; }
+.post-place a { color: var(--accent); font-weight: 600; }
+.post-area { color: var(--text-soft); font-size: 0.92rem; }
+.post-maps { font-size: 0.9rem; }
+.post-ratings { display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 10px 0 0; }
+.post-ratings div { display: flex; align-items: center; gap: 8px; }
+.post-ratings dt { font-size: 0.88rem; color: var(--text-soft); }
+.post-ratings dd { margin: 0; }
+
+.post-photos { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 6px; grid-template-columns: repeat(3, 1fr); }
+.post-photos.n1 { grid-template-columns: minmax(0, 420px); }
+.post-photos.n2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.post-photo { display: block; width: 100%; padding: 0; border: 0; border-radius: 12px; overflow: hidden; background: var(--surface-2); cursor: zoom-in; }
+.post-photo img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+
+.post-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 16px; margin-top: 12px; }
+.post-reactions { display: flex; flex-wrap: wrap; gap: 8px; }
+.react {
+  font: inherit; font-size: 0.92rem; min-height: 40px; padding: 4px 14px;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--bg); color: var(--text); cursor: pointer;
+}
+.react:hover { border-color: var(--text-soft); }
+.react[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+:where(.react, .post-photo, .thumb-remove):focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.dialog-wide { width: min(560px, calc(100% - 32px)); }
+.compose-group { display: grid; gap: 14px; }
+.compose-group[hidden], #other-place[hidden] { display: none; }
+.dialog input:not([type="radio"]):not([type="file"]) {
+  width: 100%; min-height: 44px; padding: 8px 12px; font: inherit; color: var(--text);
+  background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+}
+.label-like { display: block; margin-bottom: 6px; font-size: 0.9rem; font-weight: 600; color: var(--text-soft); }
+.thumbs { list-style: none; margin: 0 0 8px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.thumbs:empty { display: none; }
+.thumbs li { position: relative; }
+.thumbs img { display: block; width: 88px; height: 88px; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); }
+.thumb-remove {
+  position: absolute; top: -8px; right: -8px; width: 28px; height: 28px; padding: 0;
+  border: 1px solid var(--line); border-radius: 50%; background: var(--surface-2); color: var(--text); font-size: 1.1rem; line-height: 1; cursor: pointer;
+}
+.lightbox-img { display: block; width: 100%; max-height: 75vh; object-fit: contain; border-radius: 10px; }
