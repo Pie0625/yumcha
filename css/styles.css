@@ -666,9 +666,25 @@ input[type="radio"] { width: auto; min-height: 0; }
   background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
 }
 .login-card .field-hint { margin: 0; }
-.login-google { width: 100%; }
 .login-code { font-size: 1.5rem; letter-spacing: 0.3em; text-align: center; }
 .login-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; margin: 14px 0 6px; }
 
-.login-google.has-icon { display: inline-flex; align-items: center; justify-content: center; gap: 12px; }
-.btn-icon { display: block; width: 20px; height: 20px; flex: none; }
+/* Google's own sign-in button style (white, pill) */
+.login-google { display: flex; justify-content: center; }
+.gsi-material-button {
+  -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -webkit-appearance: none;
+  background-color: #fff; background-image: none; border: 1px solid #747775; border-radius: 20px;
+  box-sizing: border-box; color: #1f1f1f; cursor: pointer;
+  font-family: 'Roboto', arial, sans-serif; font-size: 14px; height: 40px; letter-spacing: 0.25px;
+  outline: none; overflow: hidden; padding: 0 12px; position: relative; text-align: center;
+  transition: background-color .218s, border-color .218s, box-shadow .218s;
+  vertical-align: middle; white-space: nowrap; width: auto; max-width: 400px; min-width: min-content;
+}
+.gsi-material-button .gsi-material-button-icon { height: 20px; margin-right: 12px; min-width: 20px; width: 20px; }
+.gsi-material-button .gsi-material-button-content-wrapper { align-items: center; display: flex; flex-direction: row; flex-wrap: nowrap; height: 100%; justify-content: space-between; position: relative; width: 100%; }
+.gsi-material-button .gsi-material-button-contents { flex-grow: 1; font-family: 'Roboto', arial, sans-serif; font-weight: 500; overflow: hidden; text-overflow: ellipsis; vertical-align: top; }
+.gsi-material-button .gsi-material-button-state { position: absolute; inset: 0; opacity: 0; transition: opacity .218s; background-color: #303030; }
+.gsi-material-button:hover .gsi-material-button-state { opacity: .08; }
+.gsi-material-button:active .gsi-material-button-state { opacity: .12; }
+.gsi-material-button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.gsi-material-button:disabled { cursor: default; opacity: .6; }
