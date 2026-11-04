@@ -655,3 +655,17 @@ input[type="radio"] { width: auto; min-height: 0; }
   border: 1px solid var(--line); border-radius: 50%; background: var(--surface-2); color: var(--text); font-size: 1.1rem; line-height: 1; cursor: pointer;
 }
 .lightbox-img { display: block; width: 100%; max-height: 75vh; object-fit: contain; border-radius: 10px; }
+
+/* Login page */
+.login-card { max-width: 440px; margin: 28px auto 12px; padding: 26px 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.login-card h1 { margin: 0 0 8px; font-family: var(--font-display); font-size: 1.8rem; line-height: 1.15; }
+.login-lede { margin: 0 0 20px; color: var(--text-soft); }
+.login-card form { display: grid; gap: 14px; }
+.login-card input {
+  width: 100%; min-height: 44px; padding: 8px 12px; font: inherit; color: var(--text);
+  background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+}
+.login-card .field-hint { margin: 0; }
+.login-google { width: 100%; }
+.login-code { font-size: 1.5rem; letter-spacing: 0.3em; text-align: center; }
+.login-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; margin: 14px 0 6px; }

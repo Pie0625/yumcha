@@ -27,7 +27,6 @@
 
   var client = null;
   var state = { user: null, filter: 'all', posts: [], counts: {}, mine: {}, more: false, status: 'loading', busy: false };
-  var pendingCompose = null; // set by ?new=1 links and by "New post" while signed out
 
   if (!A || !A.enabled) {
     host.innerHTML = '<div class="feed-note"><h2>The community opens soon</h2>' +
@@ -475,7 +474,12 @@
   }
 
   function startCompose(prefill) {
-    if (!state.user) { pendingCompose = prefill || {}; A.openAuth('signin', 'Sign in to post'); return; }
+    if (!state.user) {
+      // The login page brings people back here, and ?new=1 opens the form for them.
+      var back = Y.root + 'community/?new=1' + (prefill && prefill.cafe ? '&cafe=' + encodeURIComponent(prefill.cafe) : '');
+      A.openAuth('signin', 'Sign in to post', back);
+      return;
+    }
     openComposer(prefill);
   }
 
@@ -515,6 +519,5 @@
     state.mine = {};
     var ids = state.posts;
     (user ? loadReactions(ids).catch(function () {}) : Promise.resolve()).then(renderFeed);
-    if (user && pendingCompose) { var p = pendingCompose; pendingCompose = null; openComposer(p); }
   });
 })();
