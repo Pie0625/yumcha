@@ -109,6 +109,7 @@ The community needs a free Supabase project. Until you do this, cafe pages just 
    2. Add this **Authorized redirect URI**: `https://YOUR-PROJECT-REF.supabase.co/auth/v1/callback` (Supabase shows the exact address on the Google provider page).
    3. In Supabase, open **Authentication, then Sign In / Providers, then Google**, switch it on, and paste the Client ID and Client secret.
    4. In `js/config.js`, set `enableGoogle: true`.
+   5. Optional: put Google's official "G" icon on the button. Download it from Google's [sign-in branding guidelines](https://developers.google.com/identity/branding-guidelines) and save it as `icons/google-g.svg`. The button shows it automatically once the file is there.
 7. Commit the `js/config.js` change, merge it into `main`, and open a cafe page on your site.
 
 ### Turn on the Community page

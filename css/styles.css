@@ -669,3 +669,6 @@ input[type="radio"] { width: auto; min-height: 0; }
 .login-google { width: 100%; }
 .login-code { font-size: 1.5rem; letter-spacing: 0.3em; text-align: center; }
 .login-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; margin: 14px 0 6px; }
+
+.login-google.has-icon { display: inline-flex; align-items: center; justify-content: center; gap: 12px; }
+.btn-icon { display: block; width: 20px; height: 20px; flex: none; }

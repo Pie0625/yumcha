@@ -67,6 +67,15 @@
     if (email) input.value = email;
     form.addEventListener('submit', function (e) { e.preventDefault(); sendCode(input.value.trim(), form); });
     var g = host.querySelector('#login-google');
+    if (g) {
+      // Shows Google's own "G" if its file has been added at icons/google-g.svg (see README).
+      var icon = new Image();
+      icon.className = 'btn-icon';
+      icon.alt = '';
+      icon.width = 20; icon.height = 20;
+      icon.onload = function () { g.insertBefore(icon, g.firstChild); g.classList.add('has-icon'); };
+      icon.src = Y.root + 'icons/google-g.svg';
+    }
     if (g) g.addEventListener('click', function () {
       var msg = host.querySelector('#login-msg');
       say(msg, '');
