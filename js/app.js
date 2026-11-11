@@ -111,6 +111,9 @@
     els.count.textContent = list.length === 1 ? '1 cafe' : list.length + ' cafes';
     els.empty.hidden = list.length > 0;
     els.clear.hidden = !filtersActive();
+    // Lets the map view (js/map.js) show the same cafes that match the filters.
+    window.Yumcha.lastResults = { list: list, position: state.position };
+    document.dispatchEvent(new CustomEvent('yumcha:results', { detail: window.Yumcha.lastResults }));
   }
 
   function buildChips() {
