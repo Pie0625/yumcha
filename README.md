@@ -28,6 +28,12 @@ Yumcha helps you and your friends find a good place to *lepak* (hang out). Start
 - A "Recommend this cafe" button on each cafe page opens the form with that cafe filled in
 - Photos are shrunk to 1600px JPEGs in the browser before uploading, which also removes hidden location data
 
+**Map view**
+- A **List | Map** switch on the cafes page. The map shows only the cafes that match your filters, as pins with the rating on them
+- Tap a pin to see the cafe's area, rating, price and a link to its page
+- "Show me on the map" uses your location, and the "near me" distance appears in the pin cards
+- The map is only downloaded when someone opens it, and `?view=map` opens it directly
+
 **Next**
 - 🚧 Replies and comment threads
 
@@ -39,6 +45,7 @@ Yumcha helps you and your friends find a good place to *lepak* (hang out). Start
 
 - HTML, CSS and JavaScript (no framework for now)
 - Cafe data stored in a JavaScript file (`data/cafes.js`) for v1
+- [Leaflet](https://leafletjs.com) for the map (a copy is in `js/vendor/`, version 1.9.4, BSD 2-Clause licence) with map pictures from [OpenStreetMap](https://www.openstreetmap.org)
 - [Supabase](https://supabase.com) for accounts, posts and reports (a copy of its browser library is in `js/vendor/`, version 2.117.3, MIT licence)
 - Planned: Leaflet + OpenStreetMap for maps
 
@@ -66,6 +73,10 @@ node tools/build-pages.js
 ```
 
 Use lowercase letters, numbers and dashes in the `id`. Then commit the new folder along with the data change.
+
+### The map
+
+Every cafe needs `lat` and `lng` in `data/cafes.js` to show up on the map (right-click a place in Google Maps and click the numbers to copy them). The map pictures come from OpenStreetMap's free public servers, which is fine for a small site but not for heavy traffic. If the site grows a lot, switch to a map provider with a free plan and change `TILES` at the top of `js/map.js`. Keep the OpenStreetMap credit that shows in the corner of the map.
 
 ### Adding photos to a cafe
 
@@ -132,6 +143,7 @@ yumcha/
 ├── tools/          # build-pages.js and the cafe page template
 ├── css/styles.css  # styles
 ├── js/app.js       # list page: filters, sorting, location
+├── js/map.js       # map view on the list page
 ├── js/detail.js    # cafe page
 ├── js/common.js    # shared helpers (photos, escaping)
 ├── community/      # the Community page (yumcha/community/)
@@ -141,7 +153,8 @@ yumcha/
 ├── js/community.js # experiences on the cafe pages
 ├── js/feed.js      # the Community page: posts, photos, ratings, reactions
 ├── js/config.js    # your Supabase project URL and public key
-├── js/vendor/      # Supabase browser library (a copy, so no outside download)
+├── js/vendor/      # copies of the Supabase and Leaflet (map) libraries, so no outside download
+├── css/vendor/     # Leaflet's own styles
 ├── supabase/       # schema.sql and community.sql: tables and security rules, run once each
 ├── data/cafes.js   # sample cafe data
 ├── images/         # cafe pictures (sample illustrations for now)
@@ -155,7 +168,7 @@ yumcha/
 - [x] Filters (spend, vibe, rating)
 - [x] "Nearest" sorting
 - [x] Cafe detail page
-- [ ] Map view
+- [x] Map view
 - [x] Accounts, posts and reports (needs the Supabase setup)
 - [x] Community page with recommendations, photos, ratings and reactions
 - [ ] Replies and comment threads

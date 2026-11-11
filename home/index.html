@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/vendor/leaflet.css">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
@@ -69,8 +70,22 @@
 
     <div class="results-bar">
       <p id="count" class="count" role="status" aria-live="polite"></p>
-      <button type="button" id="clear-btn" class="link-btn" hidden>Clear filters</button>
+      <div class="results-tools">
+        <button type="button" id="clear-btn" class="link-btn" hidden>Clear filters</button>
+        <div class="seg" role="group" aria-label="View">
+          <button type="button" class="chip" id="view-list" aria-pressed="true">List</button>
+          <button type="button" class="chip" id="view-map" aria-pressed="false">Map</button>
+        </div>
+      </div>
     </div>
+
+    <section id="map-panel" class="map-panel" aria-label="Map of cafes" hidden>
+      <div class="map-bar">
+        <p id="map-note" class="map-note" role="status" aria-live="polite"></p>
+        <button type="button" id="map-me" class="btn btn-ghost">Show me on the map</button>
+      </div>
+      <div id="map" class="map" role="region" aria-label="Map showing the cafes that match your filters"></div>
+    </section>
 
     <ul id="results" class="grid"></ul>
 
@@ -89,5 +104,6 @@
   <script src="../data/cafes.js"></script>
   <script src="../js/common.js"></script>
   <script src="../js/app.js"></script>
+  <script src="../js/map.js"></script>
 </body>
 </html>
